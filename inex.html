@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>agriculture</title>
+<style type="text/css">
+img{
+position:absolute;
+left:0px;
+top:0px;
+z-index:-1;
+}
+</style>
+
+</head>
+<body bgcolor="green" align=center>
+<h1 align="center"><b>WELCOME TO AGRICULTURE WEBSITE</b></h1><br><br><br>
+<img src="C:\Users\My world\Downloads\agricuture1.jpeg" height="100%" width="100%"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Crop Water Usage Prediction</h1>
+    
+    <div class="container">
+        <form id="predictionForm">
+            <label for="crop">Select Crop:</label>
+            <select id="crop" name="crop">
+                <option value="wheat">Wheat</option>
+                <option value="rice">Rice</option>
+                <option value="corn">Corn</option>
+            </select>
+            
+            <br><br>
+            
+            <label for="soil">Soil Type:</label>
+            <select id="soil" name="soil">
+                <option value="clay">Clay</option>
+                <option value="sandy">Sandy</option>
+                <option value="loamy">Loamy</option>
+            </select>
+            
+            <br><br>
+            
+            <button type="button" onclick="predictWaterUsage()">Predict</button>
+        </form>
+
+        <h2 id="result"></h2>
+    </div>
+
+    <script>
+        function predictWaterUsage() {
+            let crop = document.getElementById("crop").value;
+            let soil = document.getElementById("soil").value;
+            
+            // Simple Example: Hardcoded logic (You will replace this with actual backend integration)
+            let waterUsage = "Unknown";
+            if (crop === "wheat" && soil === "clay") {
+                waterUsage = "Medium Water Required";
+            } else if (crop === "rice" && soil === "sandy") {
+                waterUsage = "High Water Required";
+            } else {
+                waterUsage = "Low Water Required";
+            }
+
+            document.getElementById("result").innerText = "Predicted Water Usage: " + waterUsage;
+        }
+    </script>
+
+</body>
+</html>
+<script>
+    function predict() {
+        let soil = document.getElementById("soil").value;
+        let crop = document.getElementById("crop").value;
+        let climate = document.getElementById("climate").value;
+
+        // Send input to backend via API
+        fetch("http://127.0.0.1:5000/predict", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                soil: soil,
+                crop: crop,
+                climate: climate
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("output").innerText = "Predicted Water Storage: " + data.prediction;
+        })
+        .catch(error => console.error("Error:", error));
+    }
+</script>
+<a href="newpage.html">Go to New Page</a>
+
+<a href="newpage.html" target="_blank">Go to New Page</a>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Page</title>
+</head>
+<body>
+    <h1>Welcome to the New Page!</h1>
+    <p>This is another page linked from the main website.</p>
+</body>
+</html>
+<a href="index.html">Go Back to Home</a>
